@@ -107,3 +107,27 @@ media.altura<-mean(altura)
 desvio.altura<-sd(altura)
 altura>media.altura+4*desvio.altura
 gigantes<-altura[altura>media.altura+4*desvio.altura]
+
+str(censo)
+x = 1.20
+censo$Altura.cm/100
+censo$IMC = censo$Peso.kg/((censo$Altura.cm/100)^2)
+View(censo)
+summary(censo$IMC)
+head(censo)
+tail(censo)
+censo[1,10]
+censo[1:10,]
+censo[1:10,"Nome"]
+censo[1:10,c("Nome","CPF")]
+censo[1,c("Nome", "CPF")]
+library(dplyr)
+install.packages("dplyr")
+fumantes.por.sexo <- censo %>%
+  filter(Fuma == 1) %>%
+  group_by(Sexo) %>%
+  summarise(quantidade=n())
+fumantes.por.sexo
+boxplot(censo$Altura.cm)
+barplot(censo$Altura.cm)
+hist(censo$Altura.cm, breaks = 100, col = "purple")
